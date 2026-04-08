@@ -4,13 +4,28 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// Set these values in a .env file (see .env.example)
+const requiredEnvVars = [
+  "VITE_FIREBASE_API_KEY",
+  "VITE_FIREBASE_AUTH_DOMAIN",
+  "VITE_FIREBASE_PROJECT_ID",
+  "VITE_FIREBASE_STORAGE_BUCKET",
+  "VITE_FIREBASE_MESSAGING_SENDER_ID",
+  "VITE_FIREBASE_APP_ID",
+];
+
+const missing = requiredEnvVars.filter((key) => !import.meta.env[key]);
+if (missing.length > 0) {
+  throw new Error(`Missing required Firebase environment variables: ${missing.join(", ")}`);
+}
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBK5q1CZXQ0aNagOcSmaASxkrnfuv-WLvo",
-  authDomain: "caddi-app.firebaseapp.com",
-  projectId: "caddi-app",
-  storageBucket: "caddi-app.appspot.com",
-  messagingSenderId: "902211808497",
-  appId: "1:902211808497:web:10f826949b1f221273cd50"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 // Initialize Firebase
