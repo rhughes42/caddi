@@ -52,7 +52,7 @@ A modern web application built with Vue 3, TypeScript, Vite, Tailwind CSS, and F
 
 ### Prerequisites
 
-- Node.js 18+ and npm
+- Node.js 20+ and npm
 
 ### Setup
 
